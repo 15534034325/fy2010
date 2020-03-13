@@ -79,6 +79,8 @@ public class CategoryServiceImpl implements ICategoryService {
     }
 
 
+
+
     /*
     查询所有平级子节点
      */
@@ -115,7 +117,6 @@ public class CategoryServiceImpl implements ICategoryService {
 
         return ServerResponse.serverResponseBySucess(null,resultSet);
     }
-
 
 
     private Set<Integer> findAllSubCategory(Set<Integer> categoryIds,Integer categoryId){

@@ -14,7 +14,7 @@ public class ServerResponse<T> {
 
     private int  status; //接口返回的状态码 0:代表调用接口成功 非0：调用接口失败。失败信息封装到msg中。
     private String msg;//当接口调用失败时，封装错误信息
-    private  T data;
+    private  T data;  //返回给前端的数据
 
 
 

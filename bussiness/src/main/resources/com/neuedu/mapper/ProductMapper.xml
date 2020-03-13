@@ -68,6 +68,10 @@
       detail = #{detail,jdbcType=LONGVARCHAR}
     where id = #{id,jdbcType=INTEGER}
   </update>
+
+
+
+
   <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
     <!--
       WARNING - @mbg.generated
@@ -135,6 +139,40 @@
 
     where id = #{product.id,jdbcType=INTEGER}
   </update>
+
+  <select id="findProducsByCategoryIdsAndkeyword" resultMap="BaseResultMap">
+
+    select id, category_id, name, subtitle, main_image, price, stock, status, create_time,
+    update_time, sub_images, detail
+    from neuedu_product
+
+    <where>
+      <if test="keyword!=null and keyword!=''">
+        name like #{keyword}
+      </if>
+
+      <if test="categoryIds!=null and categoryIds.size()>0">
+        and   category_id in
+        <foreach collection="categoryIds" item="categoryId" open="(" close=")" separator=",">
+          #{categoryId}
+        </foreach>
+      </if>
+    </where>
+
+  </select>
+
+
+  <update id="reduceStock" parameterType="map">
+
+    update neuedu_product
+    set
+    stock = #{stock,jdbcType=INTEGER},
+
+    update_time = now()
+
+    where id = #{productId,jdbcType=INTEGER}
+  </update>
+
 
 
 

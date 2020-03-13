@@ -21,6 +21,8 @@
     <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
     <result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
   </resultMap>
+
+
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
     <!--
       WARNING - @mbg.generated
@@ -42,9 +44,13 @@
     values (#{id,jdbcType=INTEGER}, #{userId,jdbcType=INTEGER}, #{orderNo,jdbcType=BIGINT}, 
       #{shippingId,jdbcType=INTEGER}, #{payment,jdbcType=DECIMAL}, #{paymentType,jdbcType=INTEGER}, 
       #{postage,jdbcType=INTEGER}, #{status,jdbcType=INTEGER}, #{paymentTime,jdbcType=TIMESTAMP}, 
-      #{sendTime,jdbcType=TIMESTAMP}, #{endTime,jdbcType=TIMESTAMP}, #{closeTime,jdbcType=TIMESTAMP}, 
-      #{createTime,jdbcType=TIMESTAMP}, #{updateTime,jdbcType=TIMESTAMP})
+      #{sendTime,jdbcType=TIMESTAMP}, #{endTime,jdbcType=TIMESTAMP}, #{closeTime,jdbcType=TIMESTAMP},
+    now(), now())
   </insert>
+
+
+
+
   <update id="updateByPrimaryKey" parameterType="com.neuedu.pojo.Order">
     <!--
       WARNING - @mbg.generated
@@ -63,9 +69,24 @@
       end_time = #{endTime,jdbcType=TIMESTAMP},
       close_time = #{closeTime,jdbcType=TIMESTAMP},
       create_time = #{createTime,jdbcType=TIMESTAMP},
-      update_time = #{updateTime,jdbcType=TIMESTAMP}
+      update_time = now()
     where id = #{id,jdbcType=INTEGER}
   </update>
+
+
+
+
+
+  <update id="updateOrder" parameterType="com.neuedu.pojo.Order">
+
+    update neuedu_order
+    set
+    status = #{status,jdbcType=INTEGER},
+    payment_time = #{payTime,jdbcType=TIMESTAMP},
+    update_time = now()
+    where order_no = #{orderNo,jdbcType=INTEGER}
+  </update>
+
   <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
     <!--
       WARNING - @mbg.generated
@@ -85,4 +106,15 @@
     payment_time, send_time, end_time, close_time, create_time, update_time
     from neuedu_order
   </select>
+
+
+  <select id="findOrderByOrderNo" parameterType="java.lang.Long" resultMap="BaseResultMap">
+
+    select id, user_id, order_no, shipping_id, payment, payment_type, postage, status,
+    payment_time, send_time, end_time, close_time, create_time, update_time
+    from neuedu_order
+    where order_no = #{orderNo,jdbcType=INTEGER}
+  </select>
+
+
 </mapper>

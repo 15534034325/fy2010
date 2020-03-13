@@ -20,5 +20,16 @@ public interface IProductService {
     ServerResponse list(Integer categoryId, String keyword, Integer pageNum, Integer pageSize, String orderBy);
 
 
+    /**
+     * 前台-查看详情
+     * */
+    ServerResponse detail(Integer productId);
 
+
+    /**
+     * 商品扣库存
+     * type: 0 ->减quantity库存
+     *       1->加quantity库存
+     * */
+    ServerResponse updateStock(Integer productId,Integer quantity,int type);
 }

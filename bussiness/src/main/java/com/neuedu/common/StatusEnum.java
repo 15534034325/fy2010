@@ -31,6 +31,27 @@ public enum StatusEnum {
     UPDATE_PRODUCT_NOT_EXISTS(20,"更新的商品不存在"),
     PRODUCT_UPDATE_FAIL(21,"商品更新失败"),
 
+    PRODUCT_OFFLINEORDELETE_FAIL(22,"商品已经下架或删除"),
+    UPDATE_PRODUCT_CART_FAIL(24,"更新购物车商品失败"),
+    PRODUCT_ADD_CART_FAIL(23,"商品加入购物车失败"),
+    PRODUCT_NOT_EXISTS(25,"商品不存在"),
+    ADDRESS_NOT_EMPYT(26,"收货地址不能为空"),
+
+
+    USER_CART_EMPTY(27,"用户购物车为空"),
+    PRODUCT_STOCK_NOT_FULL(28,"商品库存不足"),
+
+    ORDER_CREATE_FAIL(29,"订单创建失败"),
+    ORDER_ITEM_CREATE_FAIL(30,"订单明细创建失败"),
+    REDUCE_STOCK_FAIL(31,"商品扣库存失败"),
+    CART_CLEAN_FAIL(32,"购物车清空失败"),
+    ORDER_NOT_EXISTS(33,"订单不存在"),
+    ORDER_NOT_CANCEL(34,"订单无法取消"),
+    ORDER_CANCEL_FAIL(35,"订单取消失败"),
+    ADDRESS_ADD_FAIL(36,"地址添加失败"),
+
+    ALIPAY_ORDER_FAIL(37,"支付宝预下单失败"),
+    ORDER_STATUS_FAIL(38,"订单状态修改失败"),
 
     ;
 

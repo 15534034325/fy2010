@@ -40,7 +40,7 @@
     values (#{id,jdbcType=INTEGER}, #{userId,jdbcType=INTEGER}, #{receiverName,jdbcType=VARCHAR}, 
       #{receiverPhone,jdbcType=VARCHAR}, #{receiverMobile,jdbcType=VARCHAR}, #{receiverProvince,jdbcType=VARCHAR}, 
       #{receiverCity,jdbcType=VARCHAR}, #{receiverDistrict,jdbcType=VARCHAR}, #{receiverAddress,jdbcType=VARCHAR}, 
-      #{receiverZip,jdbcType=VARCHAR}, #{createTime,jdbcType=TIMESTAMP}, #{updateTime,jdbcType=TIMESTAMP}
+      #{receiverZip,jdbcType=VARCHAR}, now(), now()
       )
   </insert>
   <update id="updateByPrimaryKey" parameterType="com.neuedu.pojo.Shipping">
@@ -72,6 +72,8 @@
     from neuedu_shipping
     where id = #{id,jdbcType=INTEGER}
   </select>
+
+
   <select id="selectAll" resultMap="BaseResultMap">
     <!--
       WARNING - @mbg.generated
@@ -81,4 +83,7 @@
     receiver_city, receiver_district, receiver_address, receiver_zip, create_time, update_time
     from neuedu_shipping
   </select>
+
+
+
 </mapper>
